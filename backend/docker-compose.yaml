@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  backend:
+    container_name: backend
+    image: public.ecr.aws/o7w7i0o2/backend-repo:latest
+    environment:
+      SECRET_KEY: 17ea2fbf23a0358db91725aec77758742e8106a1f94898ce5554d314148a0c46be24a681c155b8269dc0ff42bfa315faa59e7a658580f3538f23f6fbead110b4b65640580fbc00c1c53f3bfe8854570672ae42cf3457a625861e0e0b27485d705198980404f7f15571ebb613c90b255947093de9842810a09549c30f149a71bed9d3a687bc25abc4ffef50d74fc81eadaf9310e6137c7ecd3d519912216dd8c90cb0a4dccb35c1c2c915aa713b16cf50b243d49750f40521de67bf48c8f95e393018c5278e86dcbe394981497b97d338b606cff7ad9e52cfe99c20dbc238d01ab4dab541d6942c1bcb99b4c2495caf5b2b956d63e2c6170bf5458945a06d2743
+      NODE_ENV: production
+      PORT: 3001
+      FRONT_ADDRESS: http://localhost:3000
+      DATABASE_URL: mysql://admin:database_password@test-database.choo2gsy20ki.us-east-2.rds.amazonaws.com:3306/prueba_tecnica
+    ports:
+      - "3001:3001"
+
+    build:
+      context: .
+      dockerfile: Dockerfile

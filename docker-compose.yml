@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: backend-repo
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: frontend-repo
