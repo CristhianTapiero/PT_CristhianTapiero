@@ -4,7 +4,8 @@ Para realizar esta prueba técnica se tuvieron en cuenta las tecnologías Node.j
 
 
 ## Uso
-Para iniciar el servidor, ejecuta el siguiente comando:
+Dado a la limitación de tiempo solo se puede ejecutar en un entorno local de desarrollo. 
+Para ello puede iniciar el servidor, ejecuta el siguiente comando:
 ```bash
 npm install
 npm start
