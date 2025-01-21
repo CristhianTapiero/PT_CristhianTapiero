@@ -1,6 +1,8 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateUser:React.FC = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
@@ -11,7 +13,6 @@ const CreateUser:React.FC = () => {
     });
 
     const handleChange = (e: any) => {
-        console.log(user);
         setUser({
             ...user,
             [e.target.name]: e.target.name === "roleId" ? parseInt(e.target.value) : e.target.value,
@@ -20,6 +21,11 @@ const CreateUser:React.FC = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        if (!user.firstName || !user.lastName || !user.email || !user.phone || !user.roleId || 
+            user.firstName === "" || user.lastName === "" || user.email === "" || user.phone === "" || user.roleId === 0) {
+            console.error("Faltan campos por llenar");
+            return
+        }
         try {
             const response = await fetch("http://localhost:3001/users", {
                 method: "POST",
@@ -31,6 +37,7 @@ const CreateUser:React.FC = () => {
             });
             const data = await response.json();
             console.log(data);
+            navigate("/dashboard");
         } catch (error) {
             console.error("Error al crear el usuario:", error);
         }

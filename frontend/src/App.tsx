@@ -6,11 +6,13 @@ import ProtectedRoute from "./components/authValidator.tsx";
 import { EditUser } from "./pages/EditUser.tsx";
 import CreateUser from "./pages/CreateUser.tsx";
 import { AuthProvider } from "./auth/context.tsx";
+import Header from "./components/header.tsx";
 
 const App = () => {
     return (
         <AuthProvider>
             <Router>
+                <Header />
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route

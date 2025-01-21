@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
 export const EditUser: React.FC = () => {
     const { id } = useParams();
     const [user, setUser] = useState<any>(null);
     const [courses, setCourses] = useState<any>(null);
+    const navigate = useNavigate();
 
     const updateData = async (e: any ) => {
         e.preventDefault();
@@ -25,8 +26,9 @@ export const EditUser: React.FC = () => {
                     user_password: null,
                 }),
             });
-            const data = await response.json();
-            setUser(data);
+            setUser(null);
+            navigate('/dashboard');
+            return response;
         } catch (error) {
             console.error('Error al actualizar el usuario:', error);
         }
@@ -78,6 +80,7 @@ export const EditUser: React.FC = () => {
     return (
         <div>
             <h1 className="text-2xl font-semibold text-gray-700">Editar Usuario</h1>
+            <button>Volver al dashboard</button>
             <form className="text-black">
                 <div>
                     <label>Nombre</label>
