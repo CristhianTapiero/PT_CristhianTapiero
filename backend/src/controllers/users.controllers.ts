@@ -20,7 +20,6 @@ export const getUsers = async (req: CustomRequest, res: CustomResponse) => {
                         name: true
                     }
                 }
-
             }
         });
         res.json(result);
@@ -171,6 +170,35 @@ export const deleteUser = async (req: CustomRequest, res: CustomResponse): Promi
         const rows = await prisma.users.delete({
             where: {
                 id: parseInt(id)
+            }
+        });
+        return res.send({ rows });
+    }catch(err){
+        console.log(err);
+        res.status(500).send("Server error");
+    }
+}
+
+export const getMatchedUser = async (req: CustomRequest, res: CustomResponse): Promise<any> => {
+    const { id } = req.params;
+    try{
+        const rows = await prisma.users.findUnique({
+            where: {
+                id: parseInt(id)
+            },
+            select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                email: true,
+                phone: true,
+                password: false,
+                roleId: true,
+                Roles: {
+                    select: {
+                        name: true
+                    }
+                }
             }
         });
         return res.send({ rows });

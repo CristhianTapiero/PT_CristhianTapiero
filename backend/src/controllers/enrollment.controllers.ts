@@ -13,6 +13,20 @@ export const getEnrollments = async (req: CustomRequest, res: CustomResponse):Pr
     }
 }
 
+export const getEnrollmentbyUser = async (req: CustomRequest, res: CustomResponse): Promise<any> => {
+    const { userId } = req.params;
+    try{
+        const rows = await prisma.usersCourse.findMany({
+            where: {
+                userId: parseInt(userId)
+            }
+        });
+        return res.send({ rows });
+    } catch (error) {
+        return res.status(500).send({ message: "Internal server error", error });
+    }
+}
+
 export const enrollStudent = async (req: CustomRequest, res: CustomResponse): Promise<any> => {
     const { studentId, courseId, statusId } = req.body;
     if (!studentId || !courseId || !statusId) {

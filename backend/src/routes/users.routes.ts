@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { getUsers, createUser, updateUser, deleteUser, getMatchedUsers } from "../controllers/users.controllers";
+import { getUsers, createUser, updateUser, deleteUser, getMatchedUsers, getMatchedUser } from "../controllers/users.controllers";
 import { authenticateToken } from "../middleware/authMiddleware";
 
 const router = Router();
 
 router.get('/users', authenticateToken, getUsers)
+
+router.get('/users/:id', authenticateToken, getMatchedUser)
 
 router.get('/users/match/:fetch', authenticateToken, getMatchedUsers)
 
