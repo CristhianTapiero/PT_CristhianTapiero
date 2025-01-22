@@ -38,7 +38,8 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
         res.cookie('access_token', token,{
             httpOnly: true,
-            secure: false,
+            secure: true,
+            sameSite: 'none',
             maxAge: 3600000
         }).send({ message: "Login successful", token });
     } catch (error) {
@@ -64,7 +65,7 @@ export const checkAuth = async (req: Request, res: Response): Promise<any> => {
 export const logout = async (req: Request, res: Response): Promise<void> => {
     res.clearCookie("access_token", {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         sameSite: "strict",
     });
     res.status(200).json({ message: "Logout successful" });

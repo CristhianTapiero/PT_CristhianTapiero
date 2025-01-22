@@ -20,7 +20,7 @@ app.listen(port, () => {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.FRONT_ADDRESS,
+    origin: 'https://courses-manager.vercel.app',
     credentials: true,
 }));
 
