@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
 
 const CreateEnroll:React.FC = () => {
-    const navigate = useNavigate();
     const [enrollment, setEnrollment] = useState({
         studentId: 0,
         courseId: 0,

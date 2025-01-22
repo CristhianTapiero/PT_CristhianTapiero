@@ -1,20 +1,29 @@
-FROM node:18-alpine
+# Usa una imagen base de Node.js para construir la aplicación
+FROM node:20 as builder
 
-RUN apk update && apk add --no-cache dumb-init
+# Crea un directorio de trabajo
+WORKDIR /usr/src/app
 
-ENV DIR /frontend
+# Copia los archivos de tu proyecto al contenedor
+COPY package*.json ./
 
-WORKDIR $DIR
+# Instala las dependencias
+RUN npm install
 
-COPY package*.json $DIR
+# Copia el resto del código del proyecto
+COPY . .
 
-RUN npm ci
+# Construye la aplicación
+RUN npm run build
 
-COPY tsconfig*.json $DIR
-COPY src $DIR/
+# Usa una imagen base de Nginx para servir la aplicación estática
+FROM nginx:alpine
 
-RUN npm run build && npm prune --production
+# Copia los archivos generados en el paso anterior al contenedor de Nginx
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 
-EXPOSE 3001
+# Expone el puerto 80
+EXPOSE 80
 
-CMD ["dumb-init", "node", "dist/index.js"]
+# Inicia Nginx
+ENTRYPOINT  ["nginx", "-g", "daemon off;"]

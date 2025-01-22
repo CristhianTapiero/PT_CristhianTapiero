@@ -49,7 +49,7 @@ export const Dashboard: React.FC = () => {
         fetchCourses();
     }, []);
 
-    const handleUserDelete = async (id) => {
+    const handleUserDelete = async (id:string) => {
         try {
             const response = await fetch(`http://localhost:3001/users/${id}`, {
                 method: 'DELETE',
@@ -69,7 +69,7 @@ export const Dashboard: React.FC = () => {
         }
     }
 
-    const handleCourseDelete = async (id) => {
+    const handleCourseDelete = async (id:string) => {
         try {
             const response = await fetch(`http://localhost:3001/courses/${id}`, {
                 method: 'DELETE',
@@ -182,12 +182,12 @@ export const Dashboard: React.FC = () => {
                             </td>
                             <td className="px-6 py-4 align-middle text-center">
                             <button 
-                                    onClick={() => navigate(`/edit-course/${course.id}`)} 
+                                    onClick={() => navigate(`/edit-course/${String(course.id)}`)} 
                                     className="bg-indigo-600 hover:bg-indigo-900 text-white px-2 py-1"
                                 >
                                     Editar
                                 </button>
-                                <button onClick={() => handleCourseDelete(course.id)} className="mt-2 bg-red-600 hover:bg-red-900 text-white px-2 py-1" >Eliminar</button>
+                                <button onClick={() => handleCourseDelete(String(course.id))} className="mt-2 bg-red-600 hover:bg-red-900 text-white px-2 py-1" >Eliminar</button>
                             </td>
                         </tr>
                     ))}
