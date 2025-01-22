@@ -12,6 +12,14 @@ Para el backend se contemplaron las técnologias NodeJS, Express y PrismaORM, co
 
 Para la base de datos se implemento una base de datos MySQL la cual funciona mediante migraciones las cuales pueden ser ejecutadas mediante el comando `npx prisma migrate dev --name (nombre_migración)`, este hara un cambio a la base de datos y quedara registrado para su posterior ejecución gracias al Dockerfile.Esta base de datos fue desplegada utilzando un servicio RDB de AWS con el fin de hostear la base de datos.
 
+## Seeders
+
+Para ejecutar el seeder (el cual creara los datos iniciales de la base de datos) debes ejecutar `npx prisma db seed`, esto generara el primer dataset para empezar a realizar operaciones CRUD.
+
+## Querys
+
+Las querys solicitadas en la prueba tecnica han sido anexadas en la carpeta raíz. Debe iniciar con las credenciales de la base de datos para poder realizarlas. 
+
 ## Frontend
 
 Para el frontend se decidio implementar React usando el servidor de desarrollo local Vite el cual permite generar plantillas para facilitar la ejecución del proyecto. Se implemento también tailwind para dar estilos a la página web y Typescript con el fin de mantener la fidelidad de los tipos de datos al ser mandados a la base de datos.
