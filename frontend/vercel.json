@@ -1,33 +1,9 @@
 {
-    "rewrites": [
+    "routes": [
         {
-            "source": "/login",
-            "destination": "/"
-        },
-        {
-            "source": "/dashboard",
-            "destination": "/"
-        },
-        {
-            "source": "/edit-user/:id",
-            "destination": "/"
-        },
-        {
-            "source": "/edit-course/:id",
-            "destination": "/"
-        },
-        {
-            "source": "/create-user",
-            "destination": "/"
-        },
-        {
-            "source": "/create-course",
-            "destination": "/"
-        },
-        {
-            "source": "/create-enrollment",
-            "destination": "/"
+            "src": "/[^.]+",
+            "dest": "/",
+            "status": 200
         }
-    ],
-    "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
+    ]
 }
