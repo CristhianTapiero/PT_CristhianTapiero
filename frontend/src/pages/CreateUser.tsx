@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { config } from "../api/config";
 
 const CreateUser:React.FC = () => {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ const CreateUser:React.FC = () => {
             return
         }
         try {
-            const response = await fetch(`${process.env.API_BASE_URL}/users`, {
+            const response = await fetch(`${config.apiBaseUrl}/users`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

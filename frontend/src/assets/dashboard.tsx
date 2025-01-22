@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { config } from '../api/config';
 
 export const Dashboard: React.FC = () => {
     const [users, setUsers] = useState<any[]>([]);
@@ -10,7 +11,7 @@ export const Dashboard: React.FC = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch(`${process.env.API_BASE_URL}/users`, {
+                const response = await fetch(`${config.apiBaseUrl}/users`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -28,7 +29,7 @@ export const Dashboard: React.FC = () => {
         };
         const fetchCourses = async () => {
             try {
-                const response = await fetch(`${process.env.API_BASE_URL}/courses`, {
+                const response = await fetch(`${config.apiBaseUrl}/courses`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -51,7 +52,7 @@ export const Dashboard: React.FC = () => {
 
     const handleUserDelete = async (id:string) => {
         try {
-            const response = await fetch(`${process.env.API_BASE_URL}/users/${id}`, {
+            const response = await fetch(`${config.apiBaseUrl}/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ export const Dashboard: React.FC = () => {
 
     const handleCourseDelete = async (id:string) => {
         try {
-            const response = await fetch(`${process.env.API_BASE_URL}/courses/${id}`, {
+            const response = await fetch(`${config.apiBaseUrl}/courses/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

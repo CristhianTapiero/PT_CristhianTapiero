@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { config } from '../api/config';
 
 export const EditUser: React.FC = () => {
     const { id } = useParams();
@@ -11,7 +12,7 @@ export const EditUser: React.FC = () => {
         e.preventDefault();
         console.log(user);
         try {
-            const response = await fetch(`${process.env.API_BASE_URL}/users/${id}`, {
+            const response = await fetch(`${config.apiBaseUrl}/users/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ export const EditUser: React.FC = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`${process.env.API_BASE_URL}/users/${id}`, {
+                const response = await fetch(`${config.apiBaseUrl}/users/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -53,7 +54,7 @@ export const EditUser: React.FC = () => {
 
         const fetchCourses = async () => {
             try {
-                const response = await fetch(`${process.env.API_BASE_URL}/enroll/${id}`, {
+                const response = await fetch(`${config.apiBaseUrl}/enroll/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

@@ -1,3 +1,3 @@
 export const config = {
-    apiBaseUrl: "${proccess.env.API_BASE_URL}"
+    apiBaseUrl: "http://18.216.199.234:3001"
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../auth/context.tsx";
 import { useLocation } from "react-router-dom";
+import { config } from "../api/config.ts";
 
 const Header: React.FC = () => {
     const { setIsAuthenticated } = useAuth();
@@ -8,7 +9,7 @@ const Header: React.FC = () => {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch(`${process.env.API_BASE_URL}/logout`, {
+            const response = await fetch(`${config.apiBaseUrl}/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

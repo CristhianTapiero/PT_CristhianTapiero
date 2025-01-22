@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { config } from "../api/config";
 
 const CreateEnroll:React.FC = () => {
     const [enrollment, setEnrollment] = useState({
@@ -22,7 +23,7 @@ const CreateEnroll:React.FC = () => {
             return
         }
         try {
-            const response = await fetch(`${process.env.API_BASE_URL}/enroll/`, {
+            const response = await fetch(`${config.apiBaseUrl}/enroll/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

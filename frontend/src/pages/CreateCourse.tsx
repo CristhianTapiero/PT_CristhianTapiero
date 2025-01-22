@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { config } from "../api/config";
 
 const CreateCourse:React.FC = () => {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const CreateCourse:React.FC = () => {
             return
         }
         try {
-            const response = await fetch(`${process.env.API_BASE_URL}/courses`, {
+            const response = await fetch(`${config.apiBaseUrl}}/courses`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
