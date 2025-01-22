@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from '../auth/context.tsx';
 import { useNavigate } from 'react-router-dom';
 import { config } from '../api/config.ts';
@@ -9,7 +9,7 @@ export default function SignInForm() {
     const { setIsAuthenticated } = useAuth(); 
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
         setError(null); 
 

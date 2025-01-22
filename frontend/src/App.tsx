@@ -11,7 +11,7 @@ import { EditCourse } from "./pages/EditCourse.tsx";
 import CreateCourse from "./pages/CreateCourse.tsx";
 import CreateEnroll from "./pages/CreateEnroll.tsx";
 
-const App = () => {
+const App:React.FC = () => {
     return (
         <AuthProvider>
             <Router>

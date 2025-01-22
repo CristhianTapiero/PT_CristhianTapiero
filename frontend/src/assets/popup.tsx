@@ -2,7 +2,7 @@ import React from "react";
 const MyModal: React.FC<{ visible: boolean; onClose: Function; children : React.ReactNode }> = ({ visible, onClose, children }) => {
     if (!visible) return null;
 
-    const handleOnClose = (e) => {
+    const handleOnClose = (e:any) => {
         if (e.target.id === "container" || e.target.id === "close-button") onClose();
     };
 
