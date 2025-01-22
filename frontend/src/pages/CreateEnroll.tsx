@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { config } from "../api/config";
 
-const CreateEnroll:React.FC = () => {
+const CreateEnroll: React.FC = () => {
     const [enrollment, setEnrollment] = useState({
         studentId: 0,
         courseId: 0,
@@ -39,21 +39,27 @@ const CreateEnroll:React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>Crear vinculación a curso</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="userId">Usuario</label>
-                <input type="number" id="studentId" name="studentId" onChange={handleChange} />
-                <label htmlFor="courseId">Curso</label>
-                <input type="number" id="courseId" name="courseId" onChange={handleChange} />
-                <label htmlFor="statusId">Estado</label>
-                <select name="statusId" id="statusId" defaultValue={1} onChange={handleChange}>
-                    <option value={1}>Inscrito</option>
-                    <option value={2}>Aprobado</option>
-                    <option value={3}>Rechazado</option>
-                    <option value={4}>Matriculado</option>
-                </select>
-                <button className="button-primary" type="submit">Crear</button>
+        <div className="flex flex-col items-center gap-y-4 mt-7">
+            <form onSubmit={handleSubmit} className="w-2/4 max-w-3xl min-w-max px-2 py-6 rounded-xl border-2 border-black">
+            <h1 className="title">Crear vinculación a curso</h1>
+                <div className="input_label">
+                    <label htmlFor="userId">Usuario:</label>
+                    <input className="flex-grow" type="number" id="studentId" name="studentId" onChange={handleChange} />
+                </div>
+                <div className="input_label">
+                    <label htmlFor="courseId">Curso:</label>
+                    <input className="flex-grow" type="number" id="courseId" name="courseId" onChange={handleChange} />
+                </div>
+                <div className="input_label">
+                    <label htmlFor="statusId">Estado</label>
+                    <select name="statusId" id="statusId" defaultValue={1} onChange={handleChange}>
+                        <option value={1}>Inscrito</option>
+                        <option value={2}>Aprobado</option>
+                        <option value={3}>Rechazado</option>
+                        <option value={4}>Matriculado</option>
+                    </select>
+                </div>
+                <button className="button-primary rounded-md" type="submit">Crear</button>
             </form>
         </div>
     );

@@ -30,15 +30,15 @@ const Header: React.FC = () => {
     const isLoginPage = location.pathname === '/login';
 
     return (
-        <nav className={`w-screen h-10 flex justify-between items-center bg-slate-500 px-7 ${isLoginPage ? 'hidden' : ''}`}>
-            <a href="/dashboard">Inicio</a>
-            <ul className="flex justify-center items-center border-slate-400 h-full">
-                <li className={`px-5 border-l-2 border-r-2 h-full flex justify-center items-center`}>
-                    <a href="/create-enrollment">Matricular usuarios</a>
-                </li>
-                <li className={`px-5 border-r-2 h-full flex justify-center items-center`}>
-                    <button className="size-full" onClick={() => handleLogout()}>Cerrar sesión</button>
-                </li>
+        <nav className={`w-screen h-16 flex justify-between items-center bg-white border-b-2 px-7 ${isLoginPage ? 'hidden' : ''}`}>
+            <img src="./logo.png" alt="Logo Course Manager" className="size-16 cursor-pointer" onClick={() => window.location.href = '/dashboard'}/>
+            <ul className="flex justify-center gap-x-2 items-center border-slate-400 h-4/6">
+            <li className={`px-5 border-l-2 h-full flex justify-center items-center bg-indigo-700 hover:bg-indigo-500 transition-colors text-white`}>
+                <a href="/create-enrollment">Matricular usuarios</a>
+            </li>
+            <li className={`px-5 border-l-2 h-full flex justify-center items-center bg-red-700 hover:bg-red-900 text-white transition-colors`}>
+                <button className="size-full" onClick={() => handleLogout()}>Cerrar sesión</button>
+            </li>
             </ul>
         </nav>
     );

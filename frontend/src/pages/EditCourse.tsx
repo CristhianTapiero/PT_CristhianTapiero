@@ -96,22 +96,22 @@ export const EditCourse: React.FC = () => {
     }
 
     return (
-        <div>
-            <h1 className="text-2xl font-semibold text-gray-700">Editar Curso</h1>
-            <form className="text-black">
-                <div>
+        <div className="flex flex-col items-center gap-y-4 mt-7">
+            <form className="w-2/4 max-w-3xl min-w-max px-2 py-6 rounded-xl border-2 border-black">
+                <h1 className="title">Editar Curso</h1>
+                <div className='input_label'>
                     <label htmlFor="name">Nombre</label>
                     <input type="text" id="name" name="name" defaultValue={course.name} onChange={(e) => setCourse({ ...course, name: e.target.value })} />
                 </div>
-                <div>
+                <div className='input_label'>
                     <label htmlFor="duration">Duración</label>
                     <input type="number" id="duration" name="duration" defaultValue={course.duration} onChange={(e) => setCourse({ ...course, duration: e.target.value })} />
                 </div>
-                <div className="flex flex-col w-3/6">
+                <div className='input_label'>
                     <label htmlFor="quota">Cupo</label>
                     <input type="number" id="quota" name="quota" defaultValue={course.quota} onChange={(e) => setCourse({ ...course, quota: e.target.value })} />
                 </div>
-                <div className="flex gap-x-5 items-center">
+                <div className='input_label'>
                     <label htmlFor="modalityId">Modalidad</label>
                     <select name="modalityId" id="modalityId" defaultValue={course.modalityId} onChange={(e) => setCourse({ ...course, modalityId: e.target.value })}>
                         <option value={1}>Virtual</option>
@@ -123,15 +123,43 @@ export const EditCourse: React.FC = () => {
             </form>
 
             <h1 className="text-2xl font-semibold text-gray-700">Estudiantes</h1>
-            <ul>
-                {users && users.map((user: any) => (
-                    <li key={user.Users.id}>
-                        {user.Users.firstName} {user.Users.lastName} 
-                        <button className="button-disruptive" onClick={()=>removeUser(user.id)}>Desvincular</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="relative overflow-x-auto mt-7 w-4/5 justify-self-center flex flex-col gap-y-4 min-h-screen">
+                <table className="w-full overflow-scroll text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                Id Usuario
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                Nombre Completo
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users && users.map((user: any) => (
 
+                            <tr key={user.Users.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <td className="px-6 py-4">
+                                    {user.Users.id}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {user.Users.firstName} {user.Users.lastName}
+                                </td>
+                                <td className="px-6 py-4 align-middle text-center">
+                                    <div className='flex gap-x-2 h-10 items-center justify-center'>
+                                        <button onClick={() => removeUser(user.id)} className="bg-red-600 rounded-sm transition-colors hover:bg-red-900 text-white px-2 py-1" >Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        ))}
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     );
 };

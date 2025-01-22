@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { config } from "../api/config";
 
-const CreateCourse:React.FC = () => {
+const CreateCourse: React.FC = () => {
     const navigate = useNavigate();
     const [course, setcourse] = useState({
         name: null,
@@ -42,22 +42,29 @@ const CreateCourse:React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>Crear Curso</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Nombre</label>
-                <input type="text" id="name" name="name" onChange={handleChange} />
-                <label htmlFor="duration">Duración</label>
-                <input type="number" id="duration" name="duration" onChange={handleChange} />
-                <label htmlFor="quota">Cupo</label>
-                <input type="number" id="quota" name="quota" onChange={handleChange} />
-                <label htmlFor="modalityId">Modalidad</label>
-                <select name="modalityId" id="modalityId" defaultValue={1} onChange={handleChange}>
-                    <option value={1}>Virtual</option>
-                    <option value={2}>Remoto</option>
-                    <option value={3}>Presencial</option>
-
-                </select>
+        <div className="flex flex-col items-center gap-y-4 mt-7">
+            <form onSubmit={handleSubmit} className="w-2/4 max-w-3xl min-w-max px-2 py-6 rounded-xl border-2 border-black">
+                <h1 className="title">Crear Curso</h1>
+                <div className="input_label">
+                    <label htmlFor="name">Nombre</label>
+                    <input type="text" id="name" name="name" onChange={handleChange} />
+                </div>
+                <div className="input_label">
+                    <label htmlFor="duration">Duración</label>
+                    <input type="number" id="duration" name="duration" onChange={handleChange} />
+                </div>
+                <div className="input_label">
+                    <label htmlFor="quota">Cupo</label>
+                    <input type="number" id="quota" name="quota" onChange={handleChange} />
+                </div>
+                <div className="input_label">
+                    <label htmlFor="modalityId">Modalidad</label>
+                    <select name="modalityId" id="modalityId" defaultValue={1} onChange={handleChange}>
+                        <option value={1}>Virtual</option>
+                        <option value={2}>Remoto</option>
+                        <option value={3}>Presencial</option>
+                    </select>
+                </div>
                 <button className="button-primary" type="submit">Crear</button>
             </form>
         </div>
