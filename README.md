@@ -33,3 +33,6 @@ Para ambos casos se implementario imagenes Docker y se alojaron en servidores de
 [Has click aquí para ir al frontend](https://courses-manager.vercel.app/login)
 
 [Has click aquí para acceder al backend](https://pt-cristhiantapiero.onrender.com)
+
+> [!IMPORTANT]  
+> Para realizar la autenticación en el frontend el email es admin@admin.com y la contraseña es admin
