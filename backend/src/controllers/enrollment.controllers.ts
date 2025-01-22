@@ -6,8 +6,8 @@ interface CustomResponse extends Response {}
 
 export const getEnrollments = async (req: CustomRequest, res: CustomResponse):Promise<any> => {
     try{
-        const [rows] = await prisma.usersCourse.findMany();
-        return res.send({ rows });
+        const rows = await prisma.usersCourse.findMany();
+        return res.send( rows );
     } catch (error) {
         return res.status(500).send({ message: "Internal server error", error });
     }
@@ -19,9 +19,48 @@ export const getEnrollmentbyUser = async (req: CustomRequest, res: CustomRespons
         const rows = await prisma.usersCourse.findMany({
             where: {
                 userId: parseInt(userId)
+            },
+            select:{
+                Courses: {
+                    select: {
+                        id: true,
+                        name: true,
+                    }
+                },
             }
         });
         return res.send({ rows });
+    } catch (error) {
+        return res.status(500).send({ message: "Internal server error", error });
+    }
+}
+
+export const getUsersbyCourse = async (req: CustomRequest, res: CustomResponse): Promise<any> => {
+    const { courseId } = req.params;
+    try{
+        const rows = await prisma.usersCourse.findMany({
+            where: {
+                courseId: parseInt(courseId),
+            },
+            select: {
+                id: true,
+                Courses: {
+                    select: {
+                        id: true,
+                        name: true,
+                    }
+                },
+                Users: {
+                    select: {
+                        id: true,
+                        firstName: true,
+                        lastName: true,
+                    }
+                }
+            }
+        },
+    );
+        return res.send(rows);
     } catch (error) {
         return res.status(500).send({ message: "Internal server error", error });
     }

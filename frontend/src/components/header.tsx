@@ -33,7 +33,7 @@ const Header: React.FC = () => {
             <a href="/dashboard">Inicio</a>
             <ul className="flex justify-center items-center border-slate-400 h-full">
                 <li className={`px-5 border-l-2 border-r-2 h-full flex justify-center items-center`}>
-                    <a href="/create-user">Crear usuario</a>
+                    <a href="/create-enrollment">Matricuar usuarios</a>
                 </li>
                 <li className={`px-5 border-r-2 h-full flex justify-center items-center`}>
                     <button className="size-full" onClick={() => handleLogout()}>Cerrar sesión</button>

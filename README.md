@@ -24,13 +24,3 @@ En el EC2 al momento de realizar el despliegue se debe realizar la ejecución de
 
 ## Front-end
 En el lado del FrontEnd también existe la validación de autenticación, de tal forma que si no se encuentra la cookie access_token, no se dara acceso mediante web-scrapping a otras partes dentro de la página. 
-
-## Malas prácticas
-
-En un sentido más personal, se tiene en cuenta las siguientes malas practicas:
-1. Del lado del frontend no hay Single Responsability Principle, por lo cual dentro de una sola interfaz hay muchas operaciónes que deberían ser distribuidas para una mejor lectura y escalabilidad de código.
-2. Variables de entorno dentro del docker-compose y DENTRO del código frontend, dado a problemas con typescript y los archivos .env se implementaron variables de entorno dentro del código, teniendo en cuenta claramente que es una muy mala practica. 
-3. Deploy del backend en EC2. Se presta para una mala administración de recursos, mala escalabilidad, problemas de seguridad y problemas del lado financiero ya que existen otras opciones como Lambda o ECR/ECS las cuales optimizan todos estos recursos.
-4. No uso de Nginx, como se menciona anteriormente esta claro que del lado de comunicación con el servidor no hay un balanceador de carga que mejore el desempeño de la aplicación y por ende la calidad del software.
-Existen muy malas practicas en este proyecto, y esto se debe a la cantidad de tiempo resolviendo problemas pequeños que generaron un atraso gigante a la hora de realizar la prueba técnica.
-

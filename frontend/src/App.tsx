@@ -7,6 +7,9 @@ import { EditUser } from "./pages/EditUser.tsx";
 import CreateUser from "./pages/CreateUser.tsx";
 import { AuthProvider } from "./auth/context.tsx";
 import Header from "./components/header.tsx";
+import { EditCourse } from "./pages/EditCourse.tsx";
+import CreateCourse from "./pages/CreateCourse.tsx";
+import CreateEnroll from "./pages/CreateEnroll.tsx";
 
 const App = () => {
     return (
@@ -25,13 +28,27 @@ const App = () => {
                     />
                     <Route path="/edit-user/:id" element={
                         <ProtectedRoute>
-                            <EditUser/>
+                            <EditUser />
+                        </ProtectedRoute>
+                    }
+                    />
+                    <Route path="/edit-course/:id" element={
+                        <ProtectedRoute>
+                            <EditCourse />
                         </ProtectedRoute>
                     }
                     />
                     <Route path="/create-user" element={
                         <ProtectedRoute>
-                            <CreateUser/>
+                            <CreateUser />
+                        </ProtectedRoute>} />
+                    <Route path="/create-course" element={
+                        <ProtectedRoute>
+                            <CreateCourse />
+                        </ProtectedRoute>} />
+                    <Route path="/create-enrollment" element={
+                        <ProtectedRoute>
+                            <CreateEnroll />
                         </ProtectedRoute>} />
                     <Route path="*" element={<Navigate to="/login" />} />
                 </Routes>

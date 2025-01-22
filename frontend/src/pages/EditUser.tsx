@@ -61,6 +61,7 @@ export const EditUser: React.FC = () => {
                     credentials: 'include',
                 });
                 const data = await response.json();
+                console.log(data.rows);
                 setCourses(data.rows);
             } catch (error) {
                 console.error('Error al cargar los cursos:', error);
@@ -102,10 +103,9 @@ export const EditUser: React.FC = () => {
             </form>
 
             <h1 className="text-2xl font-semibold text-gray-700">Cursos</h1>
-            <button>Matricular a curso</button>
             <ul>
                 {courses && courses.map((course: any) => (
-                    <li key={course.id}>{course.name}</li>
+                    <li key={course.Courses.id}>{course.Courses.name}</li>
                 ))}
             </ul>
 

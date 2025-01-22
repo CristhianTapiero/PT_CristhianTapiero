@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }:{ children: React.ReactNode }) => {
             try {
                 const response = await fetch(`${config.apiBaseUrl}/check-auth`, {
                     method: "GET",
-                    credentials: "include", // Enviar cookies automáticamente
+                    credentials: "include",
                 });
                 if (response.ok) {
                     setIsAuthenticated(true);

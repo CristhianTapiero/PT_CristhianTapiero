@@ -63,7 +63,7 @@ const CreateUser:React.FC = () => {
                     <option value={4}>Estudiante</option>
 
                 </select>
-                <button type="submit">Crear Usuario</button>
+                <button className="button-primary" type="submit">Crear Usuario</button>
             </form>
         </div>
     );

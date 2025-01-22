@@ -92,7 +92,7 @@ export const Dashboard: React.FC = () => {
     return (
         <div className="relative overflow-x-auto">
             <div className="flex items-center justify-between mb-4">
-                <h1 className="text-2xl font-semibold text-gray-700">Dashboard</h1>
+                <h1 className="text-2xl font-semibold text-gray-700">Usuarios</h1>
                 <button onClick={() => navigate(`/create-user`)} className="flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                     Agregar usuario
                 </button>
@@ -126,20 +126,25 @@ export const Dashboard: React.FC = () => {
                             <td className="px-6 py-4">
                                 {user.phone}
                             </td>
-                            <td className="px-6 py-4">
+                            <td className="px-6 py-4 align-middle text-center">
                             <button 
                                     onClick={() => navigate(`/edit-user/${user.id}`)} 
-                                    className="text-indigo-600 hover:text-indigo-900"
+                                    className="bg-indigo-600 hover:bg-indigo-900 text-white px-2 py-1"
                                 >
                                     Editar
                                 </button>
-                                <button onClick={() => handleUserDelete(user.id)} className="text-red-600 hover:text-red-900" >Eliminar</button>
+                                <button onClick={() => handleUserDelete(user.id)} className="bg-red-600 hover:bg-red-900 text-white px-2 py-1 mt-2" >Eliminar</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <h1>Cursos</h1>
+            <div className="flex items-center justify-between mb-4">
+                <h1 className="text-2xl font-semibold text-gray-700">Cursos</h1>
+                <button onClick={() => navigate(`/create-course`)} className="flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                    Agregar curso
+                </button>
+            </div>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -175,14 +180,14 @@ export const Dashboard: React.FC = () => {
                             <td className="px-6 py-4">
                                 {course.quota}
                             </td>
-                            <td className="px-6 py-4">
+                            <td className="px-6 py-4 align-middle text-center">
                             <button 
                                     onClick={() => navigate(`/edit-course/${course.id}`)} 
-                                    className="text-indigo-600 hover:text-indigo-900"
+                                    className="bg-indigo-600 hover:bg-indigo-900 text-white px-2 py-1"
                                 >
                                     Editar
                                 </button>
-                                <button onClick={() => handleCourseDelete(course.id)} className="text-red-600 hover:text-red-900" >Eliminar</button>
+                                <button onClick={() => handleCourseDelete(course.id)} className="mt-2 bg-red-600 hover:bg-red-900 text-white px-2 py-1" >Eliminar</button>
                             </td>
                         </tr>
                     ))}
