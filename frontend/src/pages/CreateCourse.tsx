@@ -24,7 +24,7 @@ const CreateCourse:React.FC = () => {
             return
         }
         try {
-            const response = await fetch("http://localhost:3001/courses", {
+            const response = await fetch(`${process.env.API_BASE_URL}/courses`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

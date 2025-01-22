@@ -11,7 +11,7 @@ export const EditUser: React.FC = () => {
         e.preventDefault();
         console.log(user);
         try {
-            const response = await fetch(`http://localhost:3001/users/${id}`, {
+            const response = await fetch(`${process.env.API_BASE_URL}/users/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const EditUser: React.FC = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/users/${id}`, {
+                const response = await fetch(`${process.env.API_BASE_URL}/users/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export const EditUser: React.FC = () => {
 
         const fetchCourses = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/enroll/${id}`, {
+                const response = await fetch(`${process.env.API_BASE_URL}/enroll/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

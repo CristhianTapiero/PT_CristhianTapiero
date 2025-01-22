@@ -22,7 +22,7 @@ const CreateEnroll:React.FC = () => {
             return
         }
         try {
-            const response = await fetch("http://localhost:3001/enroll/", {
+            const response = await fetch(`${process.env.API_BASE_URL}/enroll/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

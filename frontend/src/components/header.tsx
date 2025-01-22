@@ -8,7 +8,7 @@ const Header: React.FC = () => {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:3001/logout', {
+            const response = await fetch(`${process.env.API_BASE_URL}/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

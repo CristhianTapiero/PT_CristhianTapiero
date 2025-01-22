@@ -27,7 +27,7 @@ const CreateUser:React.FC = () => {
             return
         }
         try {
-            const response = await fetch("http://localhost:3001/users", {
+            const response = await fetch(`${process.env.API_BASE_URL}/users`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

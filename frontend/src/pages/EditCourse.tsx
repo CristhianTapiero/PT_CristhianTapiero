@@ -11,7 +11,7 @@ export const EditCourse: React.FC = () => {
         e.preventDefault();
         console.log(course);
         try {
-            const response = await fetch(`http://localhost:3001/courses/${id}`, {
+            const response = await fetch(`${process.env.API_BASE_URL}/courses/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const EditCourse: React.FC = () => {
 
     const removeUser = async (userId: number) => {
         try {
-            const response = await fetch(`http://localhost:3001/enroll/${userId}`, {
+            const response = await fetch(`${process.env.API_BASE_URL}/enroll/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const EditCourse: React.FC = () => {
     useEffect(() => {
         const fetchCourse = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/courses/${id}`, {
+                const response = await fetch(`${process.env.API_BASE_URL}/courses/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const EditCourse: React.FC = () => {
 
         const fetchUsers = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/enroll/bycourse/${id}`, {
+                const response = await fetch(`${process.env.API_BASE_URL}/enroll/bycourse/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
