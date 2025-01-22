@@ -1,26 +1,25 @@
-# Prueba Técnica - Cristhian Tapiero
+# Prueba Tencica - Cristhian Tapiero
 
-Para realizar esta prueba técnica se tuvieron en cuenta las tecnologías Node.js, Express y PrismaORM con el fin de crear el backend. Para el frontend se tomó la decisión de usar únicamente React, ya que se espera implementar Nginx en versiones posteriores. Por último, para desplegar la aplicación se implementa una máquina EC2 de AWS con el fin de agilizar la puesta a producción. También se utiliza AWS RDB con el fin de hostear la base de datos y un usuario IAM para poder realizar los push a Docker.
+Para realizar esta prueba técnica se planteo primero la estructura que iba a poseer el proyecto, las técnologias que se iban a implementar y como se iba a conectar posteriormente todo.
 
+## Backend
 
-## Uso
-Dado a la limitación de tiempo solo se puede ejecutar en un entorno local de desarrollo. 
-Para ello puede iniciar el servidor, ejecuta el siguiente comando:
-```bash
-npm install
-npm start
-```
-El servidor estará disponible en `http://localhost:3001`. Para el caso del backend, en el caso del frontend estara en el puerto `http://localhost:3000` 
+Para el backend se contemplaron las técnologias NodeJS, Express y PrismaORM, con el fin de llevar un código limpio y fácil de interpretar.
 
-## Deployment
-La aplicación se despliega en una máquina EC2 de AWS para agilizar la puesta a producción. Se utiliza AWS RDB para hostear la base de datos y un usuario IAM para realizar los push a Docker.
+## Base de datos
 
+Para la base de datos se implemento una base de datos MySQL la cual funciona mediante migraciones las cuales pueden ser ejecutadas mediante el comando `npx prisma migrate dev --name (nombre_migración)`, este hara un cambio a la base de datos y quedara registrado para su posterior ejecución gracias al Dockerfile.Esta base de datos fue desplegada utilzando un servicio RDB de AWS con el fin de hostear la base de datos.
 
-## Acceso a la API Rest
-Para acceder a la API debe hacerlo mediante el host 18.216.199.234 en el puerto 3001, esto con el fin de poder acceder a consumir la API. Cabe aclarar que para acceder a los endpoints se debe realizar una validación mediante la ruta /login en la cual, una vez autenticado, podra acceder a todas las demas rutas.
+## Frontend
 
-## Ejecución de los seeders
-En el EC2 al momento de realizar el despliegue se debe realizar la ejecución del comando npx prisma db seed, con el fin de realizar la plantación de los datos iniciales del proyecto.
+Para el frontend se decidio implementar React usando el servidor de desarrollo local Vite el cual permite generar plantillas para facilitar la ejecución del proyecto. Se implemento también tailwind para dar estilos a la página web y Typescript con el fin de mantener la fidelidad de los tipos de datos al ser mandados a la base de datos.
 
-## Front-end
-En el lado del FrontEnd también existe la validación de autenticación, de tal forma que si no se encuentra la cookie access_token, no se dara acceso mediante web-scrapping a otras partes dentro de la página. 
+## Despliegues
+
+Para ambos casos se implementario imagenes Docker y se alojaron en servidores de hosting gratuito como lo son Render y Vercel. Mediante politicas CORS se comunicaron Front y Back y gracias a la variedad de implementaciones que ofrecen (entre ellas github actions) se logró realizar CI/CD para realizar los push y reflejar inmediatamente los cambios en los entornos productivos.
+
+## Enlaces a la app corriendo
+
+[Has click aquí para ir al frontend](https://courses-manager.vercel.app/login)
+
+[Has click aquí para acceder al backend](https://pt-cristhiantapiero.onrender.com)
