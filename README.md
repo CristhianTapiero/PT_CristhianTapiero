@@ -2,6 +2,8 @@
 
 Para realizar esta prueba técnica se planteo primero la estructura que iba a poseer el proyecto, las técnologias que se iban a implementar y como se iba a conectar posteriormente todo.
 
+![Blank diagram](https://github.com/user-attachments/assets/5bc8ae24-7edf-4fd5-9472-04cc26e85eda)
+
 ## Backend
 
 Para el backend se contemplaron las técnologias NodeJS, Express y PrismaORM, con el fin de llevar un código limpio y fácil de interpretar.
